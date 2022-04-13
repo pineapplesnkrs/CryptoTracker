@@ -35,11 +35,11 @@ async function getVolChange(coin) {
 //valid time periods [ 1h, 24h, 7d, 30d, 60d, 90d ]
 async function getPriceChange(coin, time) {
     let info = await getInfo(coin);
-    try{
-        let data = info['data'][coin][0]['quote']['USD'][`percent_change_${time}`];
-        return (Math.round(data * 100) / 100) + "%";
-    } catch(e){
+    let data = info['data'][coin][0]['quote']['USD'][`percent_change_${time}`];
+    if(!data){
         return "Invalid Time"
+    } else{
+        return (Math.round(data * 100) / 100) + "%";
     }
 }
 
