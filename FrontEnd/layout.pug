@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+    head         
+        title = "CryptoTracker"
+    body 
+        header 
+            block homelink 
+                if trusted 
+                    a(href='/users/'+trusted.name) My Page 
+
+        h1 CryptoTracker 
+
+        block content 
+
+    block footer 
+
+        a(href='/') Home 
+        |
+        |
+        a(href='/search') Search
+        |
+        |
+        a(href='/user/' + val._id) Favorites

@@ -1,0 +1,12 @@
+extends layout
+block content 
+    body 
+        if searchID 
+            h2 #{searchID} Favorited Cryptos 
+        else 
+            h2 Error! 
+
+        h3 List of Favorite Cryptos 
+            each item in favorites 
+                p 
+                    a(href="/cryptos/" + val.id) #{item.crypto}
