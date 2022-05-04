@@ -1,6 +1,10 @@
 extends layout
+block styles
+    style 
+        include ../../public/styles.css
 block content
     h3 Main Page
+    #cryptolist
     each crypto in cryptos
         p Coin #{crypto['_id']}
         p Price: #{crypto['info']['price']}
