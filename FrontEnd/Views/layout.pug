@@ -1,16 +1,17 @@
 doctype html
 html(lang="en")
-    head         
-        title = "CryptoTracker"
+    head    
+        title = "Crypto Tracker"
     body 
 
         h1 CryptoTracker 
 
         block content 
-
-    block footer 
-
-        a(href='/main') Home 
-        |
-        |
-        a(href='/search') Search
+    style 
+        include ../../public/styles.css
+    block footer
+        div.otherfooter
+            a(href='/main') Home 
+            |
+            |
+            a(href='/search') Search

@@ -1,18 +1,20 @@
 extends layout 
 block content 
+    style 
+        include ../../public/styles.css
+    div.page
+        h3 Please Login 
+        form(method="POST")
+            | Username: 
+            |
+            input(name="userName")
+            br
+            |Password: 
+            input(name = "pass")
+            br
+            br
+            input(type="submit" value="Login")
+        br
 
-    h3 Please Login 
-    form(method="POST")
-        | Username: 
-        |
-        input(name="userName")
-        br
-        |Password: 
-        input(name = "pass")
-        br
-        br
-        input(type="submit" value="Login")
-    br
-
-block footer 
-    a(href='/signup') Sign Up
+block footer
+    a.footer(href='/signup') Sign Up

@@ -1,19 +1,22 @@
 extends layout 
-block content 
+block content
+    style 
+        include ../../public/styles.css
     body 
-        h2 Search for a Crypto 
-        form(method="POST")
-            select(name="prop")
-                option(value="cryptosymbol") 3 Letter Symbol for Crypto 
-            input(name="value")
-            br
-            input(type="submit" value="Search the database")
-            |
-            input(type="reset" value="Clear current selection")
-            
-            if cursor
-                h3 CryptoTracker Results
-                    p Coin #{cursor['_id']}
-                    p Price: #{cursor['info']['price']}
-                    p Change: #{cursor['info']['priceChange24h']}
+        div.page
+            h2 Search for a Crypto 
+            form(method="POST")
+                select(name="prop")
+                    option(value="cryptosymbol") 3 Letter Symbol for Crypto 
+                input(name="value")
+                br
+                input(type="submit" value="Search the database")
+                |
+                input(type="reset" value="Clear current selection")
+                
+                if cursor
+                    h3 CryptoTracker Results
+                        p Coin #{cursor['_id']}
+                        p Price: #{cursor['info']['price']}
+                        p Change: #{cursor['info']['priceChange24h']}
                         

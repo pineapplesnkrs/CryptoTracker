@@ -1,5 +1,7 @@
 h1 {
     color: skyblue;
+    font-weight: bold;
+    text-align: center;
 }
 
 .parent {
@@ -11,10 +13,28 @@ h1 {
 }
 
 .title {
+    display: flex;
+    justify-content: center;
     font-size: 1.5em;
 }
 
 .content {
+    height: min-content;
+}
+
+.page {
+    position: relative;
+    text-align: center;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.otherfooter {
     display: flex;
     justify-content: center;
+    gap: .5em;
 }

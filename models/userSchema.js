@@ -1,7 +1,6 @@
 //Christian Smith
 let mongoose = require('mongoose');
 
-
 const userSchema = new mongoose.Schema({
 	_id: {
 		type: String,

@@ -7,9 +7,9 @@ block content
         each crypto in cryptos
             div.class
                 h2.title $#{crypto['_id']}
-                    div.content
-                        p Price : #{crypto['info']['price']}
-                    div.content
-                        p Price Change: #{crypto['info']['priceChange24h']}
-                    div.content
-                        p Vol Change: #{crypto['info']['volChange']}
+                div.content
+                    p Price : #{crypto['info']['price']}
+                div.content
+                    p 24h Price Change: #{crypto['info']['priceChange24h']}
+                div.content
+                    p Vol Change: #{crypto['info']['volChange']}
