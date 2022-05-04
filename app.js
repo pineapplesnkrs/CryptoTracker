@@ -83,6 +83,7 @@ app.post('/signup', express.urlencoded({ extended: false }), async (req, res, ne
     if (req.body.password.toString() != req.body.confirm.toString()) {
         res.render('signup', { msg: "Passwords must match" });
     }
+
     let doc = new userCol({ _id: req.body.user, email: req.body.email, password: req.body.password });
     await doc.save()
     res.redirect('login')
@@ -100,7 +101,7 @@ app.post('/login', express.urlencoded({extended:false}), async (req, res, next)=
 			res.redirect('login');
 		}
 	} catch (err){
-		next(err)
+		res.redirect('login');
 	}
 })
 
