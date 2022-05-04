@@ -2,11 +2,11 @@ let mongoose = require('mongoose');
 
 const cryptoSchema = new mongoose.Schema(
     {
-        name: String,
+        _id: String,
         info: {
-            price: Number,
-            priceChange24h: Number,
-            volChange: Number,
+            price: String,
+            priceChange24h: String,
+            volChange: String,
         }
     });
     

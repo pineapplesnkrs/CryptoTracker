@@ -7,10 +7,6 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'We need to know your name']
     },
-	username: {
-        type: String,
-        required: [true, 'must have a username']
-    },
 	password:{
         type: String,
         required: [true, 'must have password']
@@ -22,6 +18,6 @@ const userSchema = new mongoose.Schema({
     favorites: Array,
 
 });
-const userCol=mongoose.model('User', userSchema)
+const userCol = mongoose.model('User', userSchema)
 
 module.exports = userCol;
