@@ -1,3 +1,8 @@
+/**
+ * 	Christian Smith
+ * 
+ * Adapted from dbManager.js by Jake Levy
+ */
 const MongoClient = require('mongodb').MongoClient;
 var getID = require('mongodb').ObjectID();
 var url = "mongodb://127.0.0.1:27017/";
@@ -47,5 +52,7 @@ database.close = async function(){
 	console.log(e.message);
     }
  }
+
+ 
     
 module.exports = database;
