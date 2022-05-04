@@ -1,0 +1,28 @@
+extends layout 
+block content 
+    body 
+        h2 Search for a Crypto 
+        form(method="POST")
+            select(name="prop")
+                option(value="cryptoname") Name of Crypto 
+                option(value="cryptosymbol") 3 Letter Symbol for Crypto 
+            input(name="value")
+            br
+            input(type="submit" value="Search the database")
+            |
+            input(type="reset" value="Clear current selection")
+
+            if results 
+                h3 CryptoTracker results for #{results.prop} :  results[results.prop]
+                -var count = 0
+                each val in results.dataArr 
+                    p 
+                        |
+                        #{val.price} Current price 
+                        |
+                        |
+                        #{val.monthchange} 30 day price difference 
+                        |
+                        |
+                        #{val.volchange} 24 hour Volume difference 
+                        
