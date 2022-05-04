@@ -36,6 +36,10 @@ app.get('/login', function (req, res) {
     res.render('login');
 })
 
+app.get('/search', function (req, res) {
+    res.render('search');
+})
+
 app.get('/signup', function (req, res) {
     res.render('signup');
 })
