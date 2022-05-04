@@ -19,9 +19,17 @@ async function createCoin(name){
 async function update(){
     const myDb = await dbMan.get("cryptoTracker");
     const coins = await myDb.collection("cryptos").find({}).toArray()
+    console.log(coins)
     for (let i = 0; i < coins.length; i++){
-        let coin = coins[i]['name'];
-        myDb.collection("cryptos").update({name: coin}, {$set: {price: await api.getPrice(coin), volChange: await api.getVolChange(coin), priceChange24h: await api.getPriceChange(coin, "24h")}});
+        let coin = coins[i]['_id'];
+        myDb.collection("cryptos").update({_id: coin}, 
+        {$set: {
+            info: {
+                price: await api.getPrice(coin), 
+                volChange: await api.getVolChange(coin), 
+                priceChange24h: await api.getPriceChange(coin, "24h")
+            }
+        }});
     }
 }
 
@@ -32,4 +40,5 @@ async function run(){
 }
 
 //run()
+update()
 module.exports = { update };
