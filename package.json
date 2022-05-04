@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "axios": "^0.26.1",
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.3.2",
+    "pug": "^3.0.2",
+    "querystring": "^0.2.1"
+  },
+  "name": "cryptotracker",
+  "description": "",
+  "version": "1.0.0",
+  "main": "backend/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pineapplesnkrs/CryptoTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pineapplesnkrs/CryptoTracker/issues"
+  },
+  "homepage": "https://github.com/pineapplesnkrs/CryptoTracker#readme"
+}
