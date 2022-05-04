@@ -1,33 +1,20 @@
 h1 {
     color: skyblue;
 }
-.class {
-    display: inline-flex;
+
+.parent {
+    display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 15em;
+    gap: 5em;
 }
-.class1 {
-    display: grid;
-    grid-auto-columns: auto;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 10px 10px;
-    gap: 10px 10px;
-    font-size: large;
+
+.title {
+    font-size: 1.5em;
 }
-.class2 {
-    display: grid;
-    grid-auto-columns: auto;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 10px 10px;
-    gap: 10px 10px;
-    font-size: large;
-}
-.class3 {
-    display: grid;
-    grid-auto-columns: auto;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 10px 10px;
-    gap: 10px 10px;
-    font-size: large;
+
+.content {
+    display: flex;
+    justify-content: center;
 }

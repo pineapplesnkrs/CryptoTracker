@@ -3,12 +3,13 @@ block content
     style 
         include ../../public/styles.css
     h3 Main Page
-    each crypto in cryptos
-        div.class
-            h2 $#{crypto['_id']}
-                div.class1
-                    p Price : #{crypto['info']['price']}
-                div.class2
-                    p Price Change: #{crypto['info']['priceChange24h']}
-                div.class3
-                    p Vol Change: #{crypto['info']['volChange']}
+    div.parent
+        each crypto in cryptos
+            div.class
+                h2.title $#{crypto['_id']}
+                    div.content
+                        p Price : #{crypto['info']['price']}
+                    div.content
+                        p Price Change: #{crypto['info']['priceChange24h']}
+                    div.content
+                        p Vol Change: #{crypto['info']['volChange']}
