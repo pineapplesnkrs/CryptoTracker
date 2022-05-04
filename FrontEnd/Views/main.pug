@@ -1,13 +1,14 @@
 extends layout
-block styles
+block content
     style 
         include ../../public/styles.css
-block content
     h3 Main Page
-    #cryptolist
     each crypto in cryptos
-        p Coin #{crypto['_id']}
-        p Price: #{crypto['info']['price']}
-        p Price Change: #{crypto['info']['priceChange24h']}
-        p Vol Change: #{crypto['info']['volChange']}
-        |
+        div.class
+            h2 $#{crypto['_id']}
+                div.class1
+                    p Price : #{crypto['info']['price']}
+                div.class2
+                    p Price Change: #{crypto['info']['priceChange24h']}
+                div.class3
+                    p Vol Change: #{crypto['info']['volChange']}

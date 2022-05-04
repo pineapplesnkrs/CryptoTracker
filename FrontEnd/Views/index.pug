@@ -1,8 +1,0 @@
-extends layout
-block homeLink
- if trusted.name
-  div(class="myPage")
-   a(href="/users/"+trusted.name) My Page
-block content
- if trusted
-   h2 Welcome, #{trusted.name}

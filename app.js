@@ -52,22 +52,27 @@ app.get('/login', function (req, res) {
 })
 
 app.get('/search', function (req, res) {
-    res.render('search');
+    if (!req.session.user){
+        res.redirect('/login');
+    }
+    else{
+    	res.render('search', {trusted: req.session.user});
+	}
 })
 
 app.get('/main', async function (req, res) {
-    const myDb = await dbMan.get("cryptoTracker");
-    let cryptos = await myDb.collection("cryptos").find({}).toArray();
-    res.render('main', { cryptos });
+    if (!req.session.user){
+        res.redirect('/login');
+    }
+    else{
+    	const myDb = await dbMan.get("cryptoTracker");
+        let cryptos = await myDb.collection("cryptos").find({}).toArray();
+        res.render('main', { cryptos });
+	}
 })
 
 app.get('/signup', function (req, res) {
     res.render('signup');
-})
-
-app.get('/crypto', function (req, res) {
-    update();
-    res.render('crypto');
 })
 
 app.post('/signup', express.urlencoded({ extended: false }), async (req, res, next) => {

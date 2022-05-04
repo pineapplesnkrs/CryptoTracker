@@ -1,6 +1,33 @@
-#crytolist {
+h1 {
+    color: skyblue;
+}
+.class {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 15em;
+}
+.class1 {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 100px 100px;
-    gap: 10px;
+    grid-auto-columns: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 10px 10px;
+    gap: 10px 10px;
+    font-size: large;
+}
+.class2 {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 10px 10px;
+    gap: 10px 10px;
+    font-size: large;
+}
+.class3 {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 10px 10px;
+    gap: 10px 10px;
+    font-size: large;
 }

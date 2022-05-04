@@ -1,3 +1,4 @@
+//Nick
 let mongoose = require('mongoose');
 
 const cryptoSchema = new mongoose.Schema(

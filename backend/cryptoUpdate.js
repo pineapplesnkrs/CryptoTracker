@@ -1,3 +1,4 @@
+//Nick
 const api = require('./coinmarketcap.js');
 const dbMan = require("../backend/dbConn.js");
 let mongoose = require('mongoose');
@@ -19,7 +20,7 @@ async function createCoin(name){
 async function update(){
     const myDb = await dbMan.get("cryptoTracker");
     const coins = await myDb.collection("cryptos").find({}).toArray()
-    console.log(coins)
+    //console.log(coins)
     for (let i = 0; i < coins.length; i++){
         let coin = coins[i]['_id'];
         myDb.collection("cryptos").update({_id: coin}, 
@@ -30,15 +31,15 @@ async function update(){
                 priceChange24h: await api.getPriceChange(coin, "24h")
             }
         }});
+        console.log("updated " + coin)
     }
 }
 
 async function run(){
     await mongoose.connect('mongodb://localhost:27017/cryptoTracker', { useNewUrlParser: true, useUnifiedTopology: true })
-    await createCoin("XLM");
+    await createCoin("MATIC");
     console.log("added")
 }
 
 //run()
-update()
-module.exports = { update };
+//update()
