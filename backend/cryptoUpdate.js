@@ -25,6 +25,4 @@ async function update(){
     }
 }
 
-createCoin("BTC");
-
 module.exports = { update };

@@ -14,9 +14,7 @@ const userSchema = new mongoose.Schema({
 	email:{
 		type: String,
 		required: [true, 'You must enter an email']
-	},
-    favorites: Array,
-
+	}
 });
 const userCol = mongoose.model('User', userSchema)
 

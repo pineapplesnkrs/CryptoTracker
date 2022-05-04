@@ -40,6 +40,12 @@ app.get('/search', function (req, res) {
     res.render('search');
 })
 
+app.get('/main', async function (req, res) {
+    const myDb = await dbMan.get("cryptoTracker");
+    let cryptos = await myDb.collection("cryptos").find({}).toArray();
+    res.render('main', {results: cryptos});
+})
+
 app.get('/signup', function (req, res) {
     res.render('signup');
 })
@@ -69,7 +75,7 @@ app.post('/login', express.urlencoded({extended:false}), async (req, res, next)=
 		if (untrusted.password.toString().toUpperCase()==result.password.toString().toUpperCase()){
 			let trusted = {name: result._id.toString()};
             req.session.user = trusted;
-            res.redirect('crypto');
+            res.redirect('main');
 		} else{
 			res.redirect('login');
 		}
