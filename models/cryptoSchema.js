@@ -1,31 +1,15 @@
 let mongoose = require('mongoose');
-let exSchema = require('./exerciseSchema');
 
-const activitySchema= new mongoose.Schema(
+const cryptoSchema = new mongoose.Schema(
     {
-        activity : {
-            type: exSchema
-        } ,
-        weight: Number,
-        distance: Number,
-        time: {
-            type: Number, 
-            validate: {
-                validator: function(){
-                    return (this.time>0)
-                }, 
-                message: "Time must be greater than 0!"
-            },
-            required: [true,'You must enter a time for speed']
-        },
-        user: String
-        
+        name: String,
+        info: {
+            price: Number,
+            priceChange24h: Number,
+            volChange: Number,
+        }
     });
     
-    activitySchema.loadClass(tracker);
-    activitySchema.path('activity').required(true, 'You must enter an activity to track');
-    activitySchema.path('weight').required(true, 'You must enter a weight for calculation');
-    activitySchema.path('distance').required(true, 'You must enter a distance for everything');
-    const actCol=mongoose.model('Activity', activitySchema)
+const cryptoCol = mongoose.model('Crypto', cryptoSchema)
 
-    module.exports = actCol;
+module.exports = cryptoCol;
