@@ -121,8 +121,12 @@ app.post('/search', function (req, res) {
             var token = postParams['value'];
             try {
                 let cursor = await cryptoCol.findOne({_id: token}).exec();
-                console.log(cursor)
-                res.render('search', { cursor });
+                if(cursor != null){
+                    res.render('search', { cursor });
+                } else{
+                    cursor = { _id: "No results found", info: { price: "NA", priceChange24h: "NA", volChange: "NA"} };
+                    res.render('search', { cursor });
+                }
             } catch (e) {
                 console.log(e.message);
                 res.writeHead(404);
