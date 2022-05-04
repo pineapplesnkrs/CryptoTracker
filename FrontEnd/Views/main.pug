@@ -1,10 +1,9 @@
 extends layout
 block content
- body
-  h2 yo
-   if results
-     h3 Main Page
-     -var count=0
-     each val in results.cryptos
-      p Coin #{count+=1}
-       a(href="/users/" + val._id) #{val._id}
+    h3 Main Page
+    each crypto in cryptos
+        p Coin #{crypto['_id']}
+        p Price: #{crypto['info']['price']}
+        p Price Change: #{crypto['info']['priceChange24h']}
+        p Vol Change: #{crypto['info']['volChange']}
+        |

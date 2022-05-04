@@ -5,7 +5,8 @@
     "express": "^4.18.1",
     "express-session": "^1.17.2",
     "mongoose": "^6.3.2",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "querystring": "^0.2.1"
   },
   "name": "cryptotracker",
   "description": "",

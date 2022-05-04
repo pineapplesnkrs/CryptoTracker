@@ -6,7 +6,7 @@ let cryptoCol = require('../models/cryptoSchema');
 
 async function createCoin(name){
     let doc = new cryptoCol({
-        name: name,
+        _id: name,
         info : {
             price: await api.getPrice(name),
             volChange: await api.getVolChange(name),
@@ -25,4 +25,11 @@ async function update(){
     }
 }
 
+async function run(){
+    await mongoose.connect('mongodb://localhost:27017/cryptoTracker', { useNewUrlParser: true, useUnifiedTopology: true })
+    await createCoin("XLM");
+    console.log("added")
+}
+
+//run()
 module.exports = { update };

@@ -6,7 +6,9 @@ const dbMan = require("./backend/dbConn.js");
 let mongoose = require('mongoose');
 mongoose.set('bufferCommands', false);
 let userCol = require('./models/userSchema');
+let cryptoCol = require('./models/cryptoSchema');
 const {update} = require('./backend/cryptoUpdate');
+var qString = require("querystring");
 
 var tracker = express.Router();
 app.use('/tracker', tracker);
@@ -19,6 +21,19 @@ app.use(session({
 	resave: false
 }));
 
+function moveOn(postData){
+    let proceed = true;
+    postParams = qString.parse(postData);
+    //handle empty data
+    for (property in postParams){
+	if (postParams[property].toString().trim() == ''){
+	    proceed = false;
+	}
+    }
+
+    return proceed;
+}
+
 tracker.get('/profile/:user', async function (req, res) {
     const myDb = await dbMan.get("cryptoTracker");
 
@@ -29,7 +44,7 @@ tracker.get('/profile/:user', async function (req, res) {
 })
 
 app.get('/', function (req, res) {
-    res.render('login');
+    res.redirect('/login');
 })
 
 app.get('/login', function (req, res) {
@@ -43,7 +58,7 @@ app.get('/search', function (req, res) {
 app.get('/main', async function (req, res) {
     const myDb = await dbMan.get("cryptoTracker");
     let cryptos = await myDb.collection("cryptos").find({}).toArray();
-    res.render('main', {results: cryptos});
+    res.render('main', { cryptos });
 })
 
 app.get('/signup', function (req, res) {
@@ -83,6 +98,36 @@ app.post('/login', express.urlencoded({extended:false}), async (req, res, next)=
 		next(err)
 	}
 })
+
+var postData;
+var postParams;
+
+app.post('/search', function (req, res) {
+    postData = '';
+    req.on('data', (data) => {
+        postData += data;
+    });
+    req.on('end', async () => {
+
+        console.log(postData);
+
+        if (moveOn(postData)) {
+            var token = postParams['value'];
+            try {
+                let cursor = await cryptoCol.findOne({_id: token}).exec();
+                console.log(cursor)
+                res.render('search', { cursor });
+            } catch (e) {
+                console.log(e.message);
+                res.writeHead(404);
+                res.write("<html><body><h1> ERROR 404. Page not found</h1>");
+                res.end("<br>" + e.messge + "<br></body></html>");
+            }
+        } else {
+            res.render('search');
+        }
+    });
+});
 
 app.listen(PORT, async function (err) {
     if (err) console.log(err);
